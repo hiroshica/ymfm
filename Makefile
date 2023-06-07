@@ -2,14 +2,16 @@
 TARGET = vgmrender
 
 
+# ソースコードの位置
+SRCROOT   = src examples/vgmrender/
 # 中間バイナリファイルの出力ディレクトリ
 OBJROOT   = objs
+# ソースディレクトリの中を(shellの)findコマンドで走破してサブディレクトリまでリスト化する
+SRCDIRS  := $(foreach dir,$(SRCROOT), $(shell find $(dir) -type d))
 # ソースディレクトリを元にforeach命令で全cppファイルをリスト化する
-SOURCESCPP	= examples/vgmrender/vgmrender.cpp examples/vgmrender/em_inflate.cpp \
-	src/ymfm_adpcm.cpp src/ymfm_misc.cpp\
-	src/ymfm_opl.cpp src/ymfm_opm.cpp src/ymfm_opn.cpp src/ymfm_opq.cpp src/ymfm_opz.cpp src/ymfm_pcm.cpp src/ymfm_ssg.cpp
+SOURCESCPP	= $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.cpp))
+SOURCESC	= $(foreach dir, $(SRCDIRS), $(wildcard $(dir)/*.c))
 
-SOURCESC	= 
 # 上記のcppファイルのリストを元にオブジェクトファイル名を決定
 OBJSCPP = $(SOURCESCPP:.cpp=.o)
 OBJSC   = $(SOURSOURCESC:.c=.o)
