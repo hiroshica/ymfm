@@ -12,7 +12,8 @@
                 "panel": "dedicated",
                 "clear": true,
                 "focus": true
-            }
+            },
+            "problemMatcher": []
         }
     ]
 }
