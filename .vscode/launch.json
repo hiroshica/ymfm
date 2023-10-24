@@ -7,9 +7,9 @@
             "request": "launch",
             "program": "${workspaceFolder}/vgmrender",
             "args": [
-                "testdata/01_Opening.vgz",
+                "testdata/03.vgm",
                 "-o",
-                "testdata/01_Opening.wav"
+                "testdata/03.wav"
             ],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
